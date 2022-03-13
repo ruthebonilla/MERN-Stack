@@ -1,0 +1,26 @@
+.forms{
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.border{
+    border-radius: 7px;
+    background-color: lightgray;
+    padding: 20px;
+    width: 380px;
+    
+}
+
+
+p span{
+text-decoration:underline;
+
+    }
+
+p{
+    font-size: 20px;
+    margin-bottom: 80px;
+    text-align: left;
+}
+

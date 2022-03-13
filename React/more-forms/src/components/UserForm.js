@@ -1,56 +1,71 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
+import "./UserForm.css" 
 
 const UserForm = (props) => {
-    const [firstName, setfirstName] = useState("");
-    // const [firstNameError, setfirstNameError] = useState("")
-    const [lastName, setlastName] = useState("")
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [confirmPass, setconfirmPass] = useState("");
+    const [form, setForm] = useState({
+        firstName: "",
+        lastName: "",
+        email: "",
+        password: "",
+        confirmPassword: ""
+    })
 
-    // const createUser = (e) => {
-    //     e.preventDefault();
-    //     const newUser = {firstName, lastName, email, password};
-    //     console.log("Welcome", newUser);
-    // };
+    const onChangeHandler = (event) => {
+        setForm({
+            ...form,
+            [event.target.name]: event.target.value
+        })
+    }
+
+    const lengthValidator = (input, num) => {
+        return input.length >= num;
+    }
 
     return(
-        <div>
-        <form>
-            <div className='mb-4'>
-                <label>First Name:</label>
-                <input type="text" onChange={ (e) => setfirstName(e.target.value )} />  
-                {/* {firstName.length >3 || firstName.length ==0 ?"" :"first name must more than 3 characters"} */}
+        <div className="forms">
+        <form className="border">
+        <h2 className=" mb-3">Register</h2>
+            <div className="mb-3 form-group">
+                <label className="form-label">First Name:</label>
+                <input name="firstName" type="text" className="form-control" onChange={onChangeHandler} />  
+                {lengthValidator(form.firstName, 3) || form.firstName.length ===0 ? "" : <span className="alert-info">you need at least 3 characters in this field</span>}
             </div>
 
-            <div className='mb-4'>
-                <label>Last Name:</label>
-                <input type="text" onChange={ (e) => setlastName(e.target.value )} />    
+            <div className="mb-3 form-group">
+                <label className="form-label">Last Name:</label>
+                <input name="lastName" type="text" className="form-control" onChange={onChangeHandler} /> 
+                {lengthValidator(form.lastName, 3) || form.lastName.length ===0 ? "" : <span className="alert-info">you need at least 3 characters in this field</span>}
             </div>
             
-            <div className='mb-4'>
-                <label>Email Address: </label>
-                <input type="text" onChange={ (e) => setEmail(e.target.value )} />    
+            <div className="mb-3 form-group">
+                <label className="form-label">Email Address: </label>
+                <input name="email" type="text" className="form-control" onChange={onChangeHandler} /> 
+                {lengthValidator(form.email, 5) || form.email.length ===0 ? "" : <span className="alert-info">you need at least 5 characters in this field</span>}
             </div>
             
-            <div className='mb-4'>
-                <label>Password: </label>
-                <input type="password" onChange={ (e) => setPassword(e.target.value )} />    
+            <div className="mb-3 form-group">
+                <label className="form-label">Password: </label>
+                <input name="password" type="text" className="form-control" onChange={onChangeHandler} /> 
+                {lengthValidator(form.password, 8) || form.password.length ===0 ? "" : <span className="alert-info">you need at least 8 characters in this field</span>}
             </div>
 
-            <div className='mb-4'>
-                <label>Confirm Password: </label>
-                <input type="password" onChange={ (e) => setconfirmPass(e.target.value )} />    
+            <div className="mb-3 form-group">
+                <label className="form-label">Confirm Password: </label>
+                <input name="confirmPassword" type="text" className="form-control" onChange={onChangeHandler} /> 
+                {(form.confirmPassword === form.password) || form.confirmPassword.length ===0 ? "" :<span className="alert-info">password does not match</span>}
             </div>
             
         </form>
-        <h2 className="mt-5">Your Form Data</h2>
-        <p>Full Name: {firstName} {lastName}</p>
-        <p>Email: {email}</p>
-        <p>Password: {password}</p>
-        <p>Confirmed Password: {confirmPass}</p>
+        <div className="border">
+        <h2 className="mt-3">Your Form Data</h2>
+        <br />
+        <p><span>Full Name:</span> {form.firstName} {form.lastName}</p>
+        <p><span>Email:</span> {form.email}</p>
+        <p><span>Password:</span> {form.password}</p>
+        <p><span>Confirmed Password:</span> {form.confirmPassword}</p>
         </div>
-    );
-};
+        </div>
+    )
+}
 
 export default UserForm;
