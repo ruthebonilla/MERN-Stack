@@ -1,0 +1,18 @@
+.listBox{
+    margin: auto;
+    width: 50%;
+    height: 500px;
+    border: 3px solid black;
+    background-color: rgba(241, 241, 123, 0.733);
+}
+
+
+
+li{
+    text-align: left;
+}
+
+.crossed-out{
+    text-decoration: line-through;
+}
+
