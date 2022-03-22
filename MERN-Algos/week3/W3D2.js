@@ -1,4 +1,4 @@
-// UNION SORTED ARRAYS
+// UNION SORTED ARRAYS, UNION UNSORTED ARRAYS
 //Efficiently combine two pre-sorted arrays into a new sorted array
 //no built in functions!!!
 
@@ -54,7 +54,7 @@ const unionUnsorted = (leftArr,rightArr) => {
 
 
 
-// different solutions from classmates-----------------------------------------------------------------------
+// different solutions from classmates-------------------------------------------------------------------------
 
 // const unionSorted = (arrLeft, arrRight) => {
 //     let newArr = [];
@@ -112,7 +112,7 @@ const unionUnsorted = (leftArr,rightArr) => {
 // }
 
 // console.log(unionSorted([2,4,7,9,10],[2,3,5,7,9,10]));
-// -----------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------------------
 
 
 // const unionSorted = (arrA, arrB) => {
